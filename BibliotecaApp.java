@@ -14,14 +14,29 @@ public class BibliotecaApp {
             opcion = leerEntero("Seleccione una opción: ");
 
             switch (opcion) {
-                case 1 -> registrarPrestamo();
-                case 2 -> mostrarPrestamos();
-                case 3 -> buscarPrestamoPorId();
-                case 4 -> actualizarPrestamo();
-                case 5 -> eliminarPrestamo();
-                case 6 -> calcularTotalMultas();
-                case 7 -> System.out.println("Saliendo...");
-                default -> System.out.println("Opción inválida.");
+                case 1:
+                 registrarPrestamo();
+                 break;
+                case 2:
+                     mostrarPrestamos();
+                     break;
+                case 3:
+                     buscarPrestamoPorId();
+                     break;
+                case 4:
+                     actualizarPrestamo();
+                     break;
+                case 5:
+                     eliminarPrestamo();
+                     break;
+                case 6:
+                     calcularTotalMultas();
+                     break;
+                case 7:
+                     System.out.println("Saliendo...");
+                     break;
+                default: System.out.println("Opción inválida.");
+                break;
             }
             System.out.println();
         } while (opcion != 7);
@@ -40,7 +55,7 @@ public class BibliotecaApp {
         System.out.println("7. Salir");
     }
 
-    // ====== CRUD (por implementar) ======
+    // ====== CRUD (ya casi) ======
     static void registrarPrestamo() {
     int id = leerEntero("Ingrese el ID: ");
     String usuario = leerTexto("Ingrese el nombre del usuario: ");
@@ -57,28 +72,35 @@ public class BibliotecaApp {
 
     prestamos.add(prestamo);
 
-    System.out.println("Préstamo registrado correctamente.");
+    System.out.println("El préstamo ha sido registrado :)");
 }
 
-static void mostrarPrestamos() {
-    if (prestamos.isEmpty()) {
-        System.out.println("No hay préstamos registrados.");
-        return;
-    }
-
-    System.out.println("=== Lista de Préstamos ===");
+ static void mostrarPrestamos(){//Todo//};
+static void buscarPrestamoPorId() {
+    int idBuscado = leerEntero("Ingrese el ID del préstamo a buscar: ");
+    boolean encontrado = false;
 
     for (ArrayList<Object> p : prestamos) {
-        System.out.println("ID: " + p.get(0));
-        System.out.println("Usuario: " + p.get(1));
-        System.out.println("Libro: " + p.get(2));
-        System.out.println("Días: " + p.get(3));
-        System.out.println("Multa por día: " + p.get(4));
-        System.out.println("------------------------");
+        int id = (int) p.get(0);
+
+        if (id == idBuscado) {
+            System.out.println("=== Préstamo encontrado ===");
+            System.out.println("ID: " + p.get(0));
+            System.out.println("Usuario: " + p.get(1));
+            System.out.println("Libro: " + p.get(2));
+            System.out.println("Días: " + p.get(3));
+            System.out.println("Multa por día: " + p.get(4));
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        System.out.println("No se encontró un préstamo con ese ID xd.");
     }
 }
 
-    static void buscarPrestamoPorId() { /* TODO */ }
+
     static void actualizarPrestamo() { /* TODO */ }
     static void eliminarPrestamo() { /* TODO */ }
 
