@@ -58,7 +58,7 @@ public class BibliotecaApp {
 
     static void actualizarPrestamo() {
     System.out.println("==== Actualizar prestamo ====");
-    int id = leerEntero("Ingrese ID edl prestamo a actualizar: ");
+    int id = leerEntero("Ingrese ID del prestamo a actualizar: ");
     
     ArrayList<Object> prestamo = null;
     boolean encontrado = false;
