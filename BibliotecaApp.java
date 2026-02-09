@@ -41,8 +41,43 @@ public class BibliotecaApp {
     }
 
     // ====== CRUD (por implementar) ======
-    static void registrarPrestamo() { /* TODO */ }
-    static void mostrarPrestamos() { /* TODO */ }
+    static void registrarPrestamo() {
+    int id = leerEntero("Ingrese el ID: ");
+    String usuario = leerTexto("Ingrese el nombre del usuario: ");
+    String libro = leerTexto("Ingrese el título del libro: ");
+    int dias = leerEntero("Digite los días de préstamo: ");
+    double multa = Double.parseDouble(leerTexto("Multa por día: "));
+
+    ArrayList<Object> prestamo = new ArrayList<>();
+    prestamo.add(id);
+    prestamo.add(usuario);
+    prestamo.add(libro);
+    prestamo.add(dias);
+    prestamo.add(multa);
+
+    prestamos.add(prestamo);
+
+    System.out.println("Préstamo registrado correctamente.");
+}
+
+static void mostrarPrestamos() {
+    if (prestamos.isEmpty()) {
+        System.out.println("No hay préstamos registrados.");
+        return;
+    }
+
+    System.out.println("=== Lista de Préstamos ===");
+
+    for (ArrayList<Object> p : prestamos) {
+        System.out.println("ID: " + p.get(0));
+        System.out.println("Usuario: " + p.get(1));
+        System.out.println("Libro: " + p.get(2));
+        System.out.println("Días: " + p.get(3));
+        System.out.println("Multa por día: " + p.get(4));
+        System.out.println("------------------------");
+    }
+}
+
     static void buscarPrestamoPorId() { /* TODO */ }
     static void actualizarPrestamo() { /* TODO */ }
     static void eliminarPrestamo() { /* TODO */ }
